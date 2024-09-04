@@ -31,11 +31,7 @@ public class AuthenticationService {
         List<Role> roleList = new ArrayList<>();
 
         Optional<Role> roleAdmin = roleRepository.findByAuthority("ADMIN");
-        if (!roleAdmin.isPresent()) {
-            Role roleAdminEntity = new Role();
-            roleAdminEntity.setAuthority("ADMIN");
-            roleList.add(roleRepository.save(roleAdminEntity));
-        } else {
+        if (roleAdmin.isPresent()) {
             roleList.add(roleAdmin.get());
         }
 
